@@ -17,7 +17,8 @@ export const html = () => {
       )
       .pipe(fileInclude()) // Для модульної збірки HTML
       .pipe(app.plugins.replace(/@img\//g, 'img/'))
-      .pipe(webpHtmlNosvg())
+      // webpHtmlNosvg тільки в режимі збірки
+      .pipe(app.plugins.if(app.isBuild, webpHtmlNosvg()))
       .pipe(
         app.plugins.if(
           app.isBuild,

@@ -25,13 +25,13 @@ import { images } from "./gulp/tasks/images.js";
 
 // Наглядач за файлами
 function wather() {
-    gulp.watch(path.watch.html, html)
-    gulp.watch(path.watch.js, js)
-    gulp.watch(path.watch.images, images)
+    gulp.watch(path.watch.html, gulp.series(html, styles));
+    gulp.watch(path.watch.js, js);
+    gulp.watch(path.watch.images, images);
 }
 
-const mainTasks = gulp.parallel( html, styles, js, images)
-const helperTask = gulp.parallel(wather, server)
+const mainTasks = gulp.parallel(styles, html, js, images);
+const helperTask = gulp.parallel(wather, server);
 
 // Серія задач
 const dev = gulp.series(reset, mainTasks, helperTask);
