@@ -5,14 +5,60 @@
         <meta charset="UTF-8">
         <title>Demo Tailwind CSS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./style/style.css">
     </head>
     <body>
-        <header ><img class="h-60 w-60"  src="img/picture/IMG_6006.jpg" alt="img"></header>
-        <div >
-            <h2 class="text-3xl text-red-950 font-bold underline">Я люблю Аню.</h2>
+        <header class="w-screen h-16 px-2 transition-all">
+    <div class="container h-full px-10 my-4 flex justify-between items-center bg-secondaryA48 mr-auto ml-auto bg-primary rounded-full shadow-xl">
+        <a href="#" class="max-w-12 flex gap-2 items-center text-zinc-50 text-xl  cursor-pointer">
+            <img src="img/icon/CoinKeep.png" alt="CoinKeep-icon">
+            <span>CoinKeep</span>
+        </a>
+
+        <div class="flex items-center">
+            <div id="burger" class="burger flex flex-col w-8 h-8 justify-between cursor-pointer md:hidden"> 
+                <div class="line-1 w-8 h-1 rounded-lg bg-white"></div>
+                <div class="line-2 w-8 h-1 rounded-lg bg-white"></div>
+                <div class="line-3 w-8 h-1 rounded-lg bg-white"></div>
+            </div>
+            <nav class="hidden md:flex gap-10 text-zinc-50 text-xl">
+                <a href="#" class="hover:text-accent transition-all">About</a>
+                <a href="#" class="hover:text-accent transition-all">Contact</a>
+            </nav>
+            <a href="https://play.google.com/store/apps?hl=uk&pli=1" class="hidden md:block">
+                <button class="flex items-center ml-10 text-xl text-zinc-50 bg-accent py-2 px-6 rounded-lg hover:bg-accentHover transition-all"> 
+                    <img src="../img/icon/arrow-down-4.svg" alt="download-icon" class="w-6 h-6 mr-1">
+                    Download
+                </button>
+            </a>
         </div>
-        
+    </div>
+</header>
+        <main>
+            <div id="modal-window" class="absolute top-0 bottom-0 left-0 right-0 bg-primaryBG hidden">
+    <div class="container h-full mr-auto ml-auto">
+        <div class="h-full flex flex-col items-center justify-center">
+            <nav id="modal-nav" class="flex flex-col gap-10 text-zinc-50 text-4xl text-center">
+                <a href="#" class="hover:text-accent transition-all">About</a>
+                <a href="#" class="hover:text-accent transition-all">Contact</a>
+            </nav>
+            <a href="https://play.google.com/store/apps?hl=uk&pli=1">
+                <button class="flex items-center mt-10 text-2xl text-zinc-50 bg-accent py-2 px-6 rounded-lg hover:bg-accentHover transition-all">
+                    <img src="../img/icon/arrow-down-4.svg" alt="download-icon" class="w-6 h-6 mr-1">
+                    Download
+                </button>
+            </a>
+        </div>
+    </div>
+</div>
+            <section class="w-screen px-2">
+    <div class="container px-10 mr-auto ml-auto"></div>
+</section>
+        </main>
+        <footer></footer>
         <script src="js/app.min.js"></script>
     </body>
 </html>

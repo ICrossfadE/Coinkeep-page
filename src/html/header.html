@@ -1,1 +1,26 @@
-<header ><img class="h-60 w-60"  src="@img/picture/IMG_6006.jpg" alt="img"></header>
+<header class="w-screen h-16 px-2 transition-all">
+    <div class="container h-full px-10 my-4 flex justify-between items-center bg-secondaryA48 mr-auto ml-auto bg-primary rounded-full shadow-xl">
+        <a href="#" class="max-w-12 flex gap-2 items-center text-zinc-50 text-xl  cursor-pointer">
+            <img src="@img/icon/CoinKeep.png" alt="CoinKeep-icon">
+            <span>CoinKeep</span>
+        </a>
+
+        <div class="flex items-center">
+            <div id="burger" class="burger flex flex-col w-8 h-8 justify-between cursor-pointer md:hidden"> 
+                <div class="line-1 w-8 h-1 rounded-lg bg-white"></div>
+                <div class="line-2 w-8 h-1 rounded-lg bg-white"></div>
+                <div class="line-3 w-8 h-1 rounded-lg bg-white"></div>
+            </div>
+            <nav class="hidden md:flex gap-10 text-zinc-50 text-xl">
+                <a href="#" class="hover:text-accent transition-all">About</a>
+                <a href="#" class="hover:text-accent transition-all">Contact</a>
+            </nav>
+            <a href="https://play.google.com/store/apps?hl=uk&pli=1" class="hidden md:block">
+                <button class="flex items-center ml-10 text-xl text-zinc-50 bg-accent py-2 px-6 rounded-lg hover:bg-accentHover transition-all"> 
+                    <img src="../img/icon/arrow-down-4.svg" alt="download-icon" class="w-6 h-6 mr-1">
+                    Download
+                </button>
+            </a>
+        </div>
+    </div>
+</header>

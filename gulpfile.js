@@ -30,7 +30,7 @@ function wather() {
     gulp.watch(path.watch.images, images);
 }
 
-const mainTasks = gulp.parallel(styles, html, js, images);
+const mainTasks = gulp.parallel(styles, images, html, js);
 const helperTask = gulp.parallel(wather, server);
 
 // Серія задач

@@ -1,8 +1,10 @@
-import webp from "gulp-webp"; // @ts-nocheck
+// ./gulp/tasks/images.js
+import webp from "gulp-webp";
 import imagemin from "gulp-imagemin";
 
 export const images = () => {
-  return app.gulp
+  // Копіювання всіх зображень без додаткової обробки
+  const copyAllImages = app.gulp
     .src(app.path.src.images, { encoding: false })
     .pipe(
       app.plugins.plumber(
@@ -12,27 +14,51 @@ export const images = () => {
         })
       )
     )
-    .pipe(app.plugins.newer(app.path.build.images))
-    // Створення webp версій
-    .pipe(app.plugins.if(app.isBuild, webp()))
-    .pipe(app.plugins.if(app.isBuild, app.gulp.dest(app.path.build.images)))
-    // Оптимізація оригінальних зображень
-    .pipe(app.plugins.if(app.isBuild, app.gulp.src(app.path.src.images)))
-    .pipe(app.plugins.if(app.isBuild, app.plugins.newer(app.path.build.images)))
-      .pipe(
-        app.plugins.if(
-          app.isBuild,
-          imagemin({
-            progressive: true,
-            svgoPlugins: [{ removeViewBox: false }], // Виправлено з flase на false
-            interlaced: true,
-            optimizationLevel: 3, // 0 to 7
-          })
-        )
+    .pipe(app.gulp.dest(app.path.build.images));
+
+  // Копіювання SVG
+  const copySvg = app.gulp
+    .src(app.path.src.svg, { encoding: false })
+    .pipe(app.gulp.dest(app.path.build.images));
+
+  // Для режиму розробки просто копіюємо файли
+  if (!app.isBuild) {
+    return copyAllImages;
+  }
+
+  // Для режиму збірки додаємо обробку WebP і оптимізацію
+  const webpProcess = app.gulp
+    .src(app.path.src.images, { encoding: false })
+    .pipe(
+      app.plugins.plumber(
+        app.plugins.notify.onError({
+          title: "IMAGES WEBP",
+          message: "Error: <%= error.message %>",
+        })
       )
-    .pipe(app.gulp.dest(app.path.build.images))
-    // Копіювання SVG в будь-якому випадку
-    .pipe(app.gulp.src(app.path.src.svg))
-    .pipe(app.gulp.dest(app.path.build.images))
-    .pipe(app.plugins.browserSync.stream());
+    )
+    .pipe(webp())
+    .pipe(app.gulp.dest(app.path.build.images));
+
+  const optimizeProcess = app.gulp
+    .src(app.path.src.images, { encoding: false })
+    .pipe(
+      app.plugins.plumber(
+        app.plugins.notify.onError({
+          title: "IMAGES OPTIMIZE",
+          message: "Error: <%= error.message %>",
+        })
+      )
+    )
+    .pipe(
+      imagemin({
+        progressive: true,
+        interlaced: true,
+        optimizationLevel: 3,
+      })
+    )
+    .pipe(app.gulp.dest(app.path.build.images));
+
+  // Повертаємо відповідний потік
+  return app.isBuild ? copyAllImages : copySvg;
 };
