@@ -12,11 +12,30 @@ body {
   content: '';
   position: absolute;
   top: 50%;
-  right: -2rem;  /* Відступ праворуч від кнопки */
+  right: -2rem;
   width: 2rem;
   height: 2rem;
   background-image: url('../img/icon/arrow-down-4.svg');
   background-size: contain;
   background-repeat: no-repeat;
-  transform: translateY(-50%); /* Центрує іконку по вертикалі */
+  transform: translateY(-50%);
+}
+
+
+.visible {
+  transform: translateY(0);
+}
+
+header {
+  transform: translateY(-150%); /* Збільшена величина, щоб врахувати margin */
+  transition: transform 0.3s ease;
+}
+
+header.visible {
+  transform: translateY(0);
+}
+
+.hero-gradient {
+  background-image: linear-gradient(to right top, #112031, #00435d, #006a7c, #009285, #17b978);
+  box-shadow: inset 0px -200px 150px -70px rgba(0, 0, 0, 0.5);
 }

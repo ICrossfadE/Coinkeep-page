@@ -16,6 +16,7 @@ module.exports = {
         accent: '#17B978',
         accentHover: '#51cf9c', 
         accentSecondary: '#FF0303',
+        darkBG: '#112031'
       },
     },
     plugins: [],
