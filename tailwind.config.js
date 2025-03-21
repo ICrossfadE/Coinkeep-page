@@ -18,6 +18,12 @@ module.exports = {
         accentSecondary: '#FF0303',
         darkBG: '#112031'
       },
+
+      transitionDuration: {
+        '400': '400ms',
+        '800': '800ms',
+        '1500': '1500ms',
+      }
     },
     plugins: [],
   },

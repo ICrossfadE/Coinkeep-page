@@ -1,24 +1,20 @@
-// стан header
-let wasVisible = false;
+// Стан видимості для кожного елемента
+const visibilityState = new Map();
 
-export function handleScroll() {
-
-    const header = document.getElementById('header');
-    //Значення після якого появиться header
-    const triggerPoint = 10;
-    
+export function handleScroll(htmlIdelement, startScroll) {
+    const triggerPoint = startScroll;
     const scrollPosition = window.scrollY;
     
-    if (scrollPosition > triggerPoint && !wasVisible) {
-        // Якщо скролим нижче потрібного значення і header ще не видно
-        header.classList.add('visible');
-        wasVisible = true;
-    } else if (scrollPosition <= triggerPoint && wasVisible) {
-        // Якщо скролим вище нашого значення і header видно
-        header.classList.remove('visible');
-        wasVisible = false;
+    // Отримуємо або створюємо стан для конкретного елемента
+    if (!visibilityState.has(htmlIdelement)) {
+        visibilityState.set(htmlIdelement, false);
     }
 
-   
+    let wasVisible = visibilityState.get(htmlIdelement);
+
+    if (scrollPosition > triggerPoint && !wasVisible) {
+        htmlIdelement.classList.add('visible');
+        visibilityState.set(htmlIdelement, true);
+    }
 }
 
