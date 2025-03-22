@@ -6,6 +6,7 @@
 
 body {
   @apply font-jakarta;
+  min-height: 100vh;
 }
 
 .download::before {
@@ -73,5 +74,6 @@ header.visible {
 }
 
 .hero-content {
+  position: relative;
   height: clamp(27rem, 7.391rem + 98.05vw, 48.447rem);
 }
